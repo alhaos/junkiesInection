@@ -6,14 +6,20 @@ import (
 	"github.com/alhaos/junkiesInection/internal/model"
 )
 
+const count = 1000000
+
 func main() {
 
-	for n := range 100 {
+	var sum int
+
+	for _ = range count {
 		t := model.NewDefaultTrial()
 		i := 0
 		for ; !t.IsAllInfected(); i++ {
 			t.ShootUpJunkies()
 		}
-		fmt.Printf("case: [%d], days:[%d]\r\n", n, i)
+		sum += i
 	}
+
+	fmt.Printf("avg days: %d", sum/count)
 }
